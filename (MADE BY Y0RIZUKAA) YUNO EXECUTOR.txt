@@ -1,0 +1,608 @@
+--[=[
+ d888b  db    db d888888b      .d888b.      db      db    db  .d8b.  
+88' Y8b 88    88   `88'        VP  `8D      88      88    88 d8' `8b 
+88      88    88    88            odD'      88      88    88 88ooo88 
+88  ooo 88    88    88          .88'        88      88    88 88~~~88 
+88. ~8~ 88b  d88   .88.        j88.         88booo. 88b  d88 88   88    @uniquadev
+ Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER 
+
+designed using localmaze gui creator
+]=]
+
+-- Instances: 39 | Scripts: 0 | Modules: 0 | Tags: 0
+local LMG2L = {};
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui
+LMG2L["ScreenGui_1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+LMG2L["ScreenGui_1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame
+LMG2L["Frame_2"] = Instance.new("Frame", LMG2L["ScreenGui_1"]);
+LMG2L["Frame_2"]["BorderSizePixel"] = 0;
+LMG2L["Frame_2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["Frame_2"]["Size"] = UDim2.new(0, 492, 0, 30);
+LMG2L["Frame_2"]["Position"] = UDim2.new(0, 70, 0, 60);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel
+LMG2L["ImageLabel_3"] = Instance.new("ImageLabel", LMG2L["Frame_2"]);
+LMG2L["ImageLabel_3"]["BorderSizePixel"] = 0;
+LMG2L["ImageLabel_3"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+-- LMG2L["ImageLabel_3"]["ImageContent"] = ;
+LMG2L["ImageLabel_3"]["Image"] = [[rbxassetid://121277228837870]];
+LMG2L["ImageLabel_3"]["Size"] = UDim2.new(0, 26, 0, 24);
+LMG2L["ImageLabel_3"]["BackgroundTransparency"] = 1;
+LMG2L["ImageLabel_3"]["Position"] = UDim2.new(0, 6, 0, 2);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel.TextLabel
+LMG2L["TextLabel_4"] = Instance.new("TextLabel", LMG2L["ImageLabel_3"]);
+LMG2L["TextLabel_4"]["TextWrapped"] = true;
+LMG2L["TextLabel_4"]["BorderSizePixel"] = 0;
+LMG2L["TextLabel_4"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+LMG2L["TextLabel_4"]["TextScaled"] = true;
+LMG2L["TextLabel_4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextLabel_4"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextLabel_4"]["BackgroundTransparency"] = 1;
+LMG2L["TextLabel_4"]["Size"] = UDim2.new(0, 228, 0, 24);
+LMG2L["TextLabel_4"]["Text"] = [[Yuno Executor]];
+LMG2L["TextLabel_4"]["Position"] = UDim2.new(0, 32, 0, 0);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2
+LMG2L["ImageLabel2_5"] = Instance.new("ImageLabel", LMG2L["Frame_2"]);
+LMG2L["ImageLabel2_5"]["BorderSizePixel"] = 0;
+LMG2L["ImageLabel2_5"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+-- LMG2L["ImageLabel2_5"]["ImageContent"] = ;
+LMG2L["ImageLabel2_5"]["Image"] = [[rbxassetid://97582071187697]];
+LMG2L["ImageLabel2_5"]["Size"] = UDim2.new(0, 492, 0, 336);
+LMG2L["ImageLabel2_5"]["Name"] = [[ImageLabel2]];
+LMG2L["ImageLabel2_5"]["Position"] = UDim2.new(0, 0, 0, 30);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame2
+LMG2L["Frame2_6"] = Instance.new("Frame", LMG2L["ImageLabel2_5"]);
+LMG2L["Frame2_6"]["Visible"] = false;
+LMG2L["Frame2_6"]["BorderSizePixel"] = 0;
+LMG2L["Frame2_6"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["Frame2_6"]["Size"] = UDim2.new(0, 492, 0, 338);
+LMG2L["Frame2_6"]["Position"] = UDim2.new(0, -2, 0, 0);
+LMG2L["Frame2_6"]["Name"] = [[Frame2]];
+LMG2L["Frame2_6"]["BackgroundTransparency"] = 1;
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame2.TextButton7
+LMG2L["TextButton7_7"] = Instance.new("TextButton", LMG2L["Frame2_6"]);
+LMG2L["TextButton7_7"]["TextSize"] = 18;
+LMG2L["TextButton7_7"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextButton7_7"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton7_7"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextButton7_7"]["BackgroundTransparency"] = 0.6;
+LMG2L["TextButton7_7"]["Size"] = UDim2.new(0, 118, 0, 56);
+LMG2L["TextButton7_7"]["Text"] = [[FACE ALL]];
+LMG2L["TextButton7_7"]["Name"] = [[TextButton7]];
+LMG2L["TextButton7_7"]["Position"] = UDim2.new(0, 130, 0, 213);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame2.TextButton2
+LMG2L["TextButton2_8"] = Instance.new("TextButton", LMG2L["Frame2_6"]);
+LMG2L["TextButton2_8"]["TextSize"] = 18;
+LMG2L["TextButton2_8"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextButton2_8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton2_8"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextButton2_8"]["BackgroundTransparency"] = 0.6;
+LMG2L["TextButton2_8"]["Size"] = UDim2.new(0, 118, 0, 56);
+LMG2L["TextButton2_8"]["Text"] = [[SPEED]];
+LMG2L["TextButton2_8"]["Name"] = [[TextButton2]];
+LMG2L["TextButton2_8"]["Position"] = UDim2.new(0, 128, 0, 42);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame2.TextButton3
+LMG2L["TextButton3_9"] = Instance.new("TextButton", LMG2L["Frame2_6"]);
+LMG2L["TextButton3_9"]["TextSize"] = 18;
+LMG2L["TextButton3_9"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextButton3_9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton3_9"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextButton3_9"]["BackgroundTransparency"] = 0.6;
+LMG2L["TextButton3_9"]["Size"] = UDim2.new(0, 118, 0, 56);
+LMG2L["TextButton3_9"]["Text"] = [[BILLBOARD]];
+LMG2L["TextButton3_9"]["Name"] = [[TextButton3]];
+LMG2L["TextButton3_9"]["Position"] = UDim2.new(0, 6, 0, 106);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame2.TextButton
+LMG2L["TextButton_a"] = Instance.new("TextButton", LMG2L["Frame2_6"]);
+LMG2L["TextButton_a"]["TextSize"] = 18;
+LMG2L["TextButton_a"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextButton_a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton_a"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextButton_a"]["BackgroundTransparency"] = 0.6;
+LMG2L["TextButton_a"]["Size"] = UDim2.new(0, 118, 0, 56);
+LMG2L["TextButton_a"]["Text"] = [[FLOATING PAD]];
+LMG2L["TextButton_a"]["Position"] = UDim2.new(0, 6, 0, 42);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame2.TextButton8
+LMG2L["TextButton8_b"] = Instance.new("TextButton", LMG2L["Frame2_6"]);
+LMG2L["TextButton8_b"]["TextSize"] = 18;
+LMG2L["TextButton8_b"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextButton8_b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton8_b"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextButton8_b"]["BackgroundTransparency"] = 0.6;
+LMG2L["TextButton8_b"]["Size"] = UDim2.new(0, 118, 0, 56);
+LMG2L["TextButton8_b"]["Text"] = [[SOUND]];
+LMG2L["TextButton8_b"]["Name"] = [[TextButton8]];
+LMG2L["TextButton8_b"]["Position"] = UDim2.new(0, 130, 0, 276);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame2.TextButton4
+LMG2L["TextButton4_c"] = Instance.new("TextButton", LMG2L["Frame2_6"]);
+LMG2L["TextButton4_c"]["TextSize"] = 18;
+LMG2L["TextButton4_c"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextButton4_c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton4_c"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextButton4_c"]["BackgroundTransparency"] = 0.6;
+LMG2L["TextButton4_c"]["Size"] = UDim2.new(0, 118, 0, 56);
+LMG2L["TextButton4_c"]["Text"] = [[HEAD SHAKE]];
+LMG2L["TextButton4_c"]["Name"] = [[TextButton4]];
+LMG2L["TextButton4_c"]["Position"] = UDim2.new(0, 128, 0, 106);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame2.TextBox2
+LMG2L["TextBox2_d"] = Instance.new("TextBox", LMG2L["Frame2_6"]);
+LMG2L["TextBox2_d"]["Name"] = [[TextBox2]];
+LMG2L["TextBox2_d"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+LMG2L["TextBox2_d"]["TextWrapped"] = true;
+LMG2L["TextBox2_d"]["TextSize"] = 14;
+LMG2L["TextBox2_d"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextBox2_d"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+LMG2L["TextBox2_d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextBox2_d"]["FontFace"] = Font.new([[rbxasset://fonts/families/Inconsolata.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextBox2_d"]["MultiLine"] = true;
+LMG2L["TextBox2_d"]["ClearTextOnFocus"] = false;
+LMG2L["TextBox2_d"]["Size"] = UDim2.new(0, 118, 0, 16);
+LMG2L["TextBox2_d"]["Position"] = UDim2.new(0, 4, 0, 192);
+LMG2L["TextBox2_d"]["Text"] = [[]];
+LMG2L["TextBox2_d"]["BackgroundTransparency"] = 0.6;
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame2.TextButton9
+LMG2L["TextButton9_e"] = Instance.new("TextButton", LMG2L["Frame2_6"]);
+LMG2L["TextButton9_e"]["TextSize"] = 18;
+LMG2L["TextButton9_e"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextButton9_e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton9_e"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextButton9_e"]["BackgroundTransparency"] = 0.6;
+LMG2L["TextButton9_e"]["Size"] = UDim2.new(0, 108, 0, 56);
+LMG2L["TextButton9_e"]["Text"] = [[MESSAGE]];
+LMG2L["TextButton9_e"]["Name"] = [[TextButton9]];
+LMG2L["TextButton9_e"]["Position"] = UDim2.new(0, 370, 0, 276);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame2.TextButton10
+LMG2L["TextButton10_f"] = Instance.new("TextButton", LMG2L["Frame2_6"]);
+LMG2L["TextButton10_f"]["TextSize"] = 18;
+LMG2L["TextButton10_f"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextButton10_f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton10_f"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextButton10_f"]["BackgroundTransparency"] = 0.6;
+LMG2L["TextButton10_f"]["Size"] = UDim2.new(0, 108, 0, 56);
+LMG2L["TextButton10_f"]["Text"] = [[HINT]];
+LMG2L["TextButton10_f"]["Name"] = [[TextButton10]];
+LMG2L["TextButton10_f"]["Position"] = UDim2.new(0, 256, 0, 276);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame2.TextButton6
+LMG2L["TextButton6_10"] = Instance.new("TextButton", LMG2L["Frame2_6"]);
+LMG2L["TextButton6_10"]["TextSize"] = 18;
+LMG2L["TextButton6_10"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextButton6_10"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton6_10"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextButton6_10"]["BackgroundTransparency"] = 0.6;
+LMG2L["TextButton6_10"]["Size"] = UDim2.new(0, 118, 0, 56);
+LMG2L["TextButton6_10"]["Text"] = [[PATRICE]];
+LMG2L["TextButton6_10"]["Name"] = [[TextButton6]];
+LMG2L["TextButton6_10"]["Position"] = UDim2.new(0, 4, 0, 276);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame2.TextButton5
+LMG2L["TextButton5_11"] = Instance.new("TextButton", LMG2L["Frame2_6"]);
+LMG2L["TextButton5_11"]["TextSize"] = 18;
+LMG2L["TextButton5_11"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextButton5_11"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton5_11"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextButton5_11"]["BackgroundTransparency"] = 0.6;
+LMG2L["TextButton5_11"]["Size"] = UDim2.new(0, 118, 0, 56);
+LMG2L["TextButton5_11"]["Text"] = [[DECAL SPAM]];
+LMG2L["TextButton5_11"]["Name"] = [[TextButton5]];
+LMG2L["TextButton5_11"]["Position"] = UDim2.new(0, 4, 0, 213);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame2.TextLabel
+LMG2L["TextLabel_12"] = Instance.new("TextLabel", LMG2L["Frame2_6"]);
+LMG2L["TextLabel_12"]["TextWrapped"] = true;
+LMG2L["TextLabel_12"]["BorderSizePixel"] = 0;
+LMG2L["TextLabel_12"]["TextScaled"] = true;
+LMG2L["TextLabel_12"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextLabel_12"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextLabel_12"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextLabel_12"]["BackgroundTransparency"] = 1;
+LMG2L["TextLabel_12"]["Size"] = UDim2.new(0, 118, 0, 16);
+LMG2L["TextLabel_12"]["Text"] = [[TEXT]];
+LMG2L["TextLabel_12"]["Position"] = UDim2.new(0, 130, 0, 170);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame2.TextLabel2
+LMG2L["TextLabel2_13"] = Instance.new("TextLabel", LMG2L["Frame2_6"]);
+LMG2L["TextLabel2_13"]["TextWrapped"] = true;
+LMG2L["TextLabel2_13"]["BorderSizePixel"] = 0;
+LMG2L["TextLabel2_13"]["TextScaled"] = true;
+LMG2L["TextLabel2_13"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextLabel2_13"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextLabel2_13"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextLabel2_13"]["BackgroundTransparency"] = 1;
+LMG2L["TextLabel2_13"]["Size"] = UDim2.new(0, 118, 0, 16);
+LMG2L["TextLabel2_13"]["Text"] = [[DECAL ID]];
+LMG2L["TextLabel2_13"]["Name"] = [[TextLabel2]];
+LMG2L["TextLabel2_13"]["Position"] = UDim2.new(0, 4, 0, 170);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame2.TextBox
+LMG2L["TextBox_14"] = Instance.new("TextBox", LMG2L["Frame2_6"]);
+LMG2L["TextBox_14"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+LMG2L["TextBox_14"]["TextWrapped"] = true;
+LMG2L["TextBox_14"]["TextSize"] = 14;
+LMG2L["TextBox_14"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextBox_14"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+LMG2L["TextBox_14"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextBox_14"]["FontFace"] = Font.new([[rbxasset://fonts/families/Inconsolata.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextBox_14"]["MultiLine"] = true;
+LMG2L["TextBox_14"]["ClearTextOnFocus"] = false;
+LMG2L["TextBox_14"]["Size"] = UDim2.new(0, 118, 0, 16);
+LMG2L["TextBox_14"]["Position"] = UDim2.new(0, 130, 0, 192);
+LMG2L["TextBox_14"]["Text"] = [[]];
+LMG2L["TextBox_14"]["BackgroundTransparency"] = 0.6;
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame2.TextLabel3
+LMG2L["TextLabel3_15"] = Instance.new("TextLabel", LMG2L["Frame2_6"]);
+LMG2L["TextLabel3_15"]["TextWrapped"] = true;
+LMG2L["TextLabel3_15"]["BorderSizePixel"] = 0;
+LMG2L["TextLabel3_15"]["TextScaled"] = true;
+LMG2L["TextLabel3_15"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextLabel3_15"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextLabel3_15"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextLabel3_15"]["BackgroundTransparency"] = 1;
+LMG2L["TextLabel3_15"]["Size"] = UDim2.new(0, 232, 0, 16);
+LMG2L["TextLabel3_15"]["Text"] = [[SCRIPT]];
+LMG2L["TextLabel3_15"]["Name"] = [[TextLabel3]];
+LMG2L["TextLabel3_15"]["Position"] = UDim2.new(0, 256, 0, 40);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame2.ScrollingFrame
+LMG2L["ScrollingFrame_16"] = Instance.new("ScrollingFrame", LMG2L["Frame2_6"]);
+LMG2L["ScrollingFrame_16"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["ScrollingFrame_16"]["Size"] = UDim2.new(0, 232, 0, 208);
+LMG2L["ScrollingFrame_16"]["Position"] = UDim2.new(0, 256, 0, 60);
+LMG2L["ScrollingFrame_16"]["BackgroundTransparency"] = 0.6;
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame3
+LMG2L["Frame3_17"] = Instance.new("Frame", LMG2L["ImageLabel2_5"]);
+LMG2L["Frame3_17"]["BorderSizePixel"] = 0;
+LMG2L["Frame3_17"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["Frame3_17"]["Size"] = UDim2.new(0, 116, 0, 22);
+LMG2L["Frame3_17"]["Position"] = UDim2.new(0, 62, 0, 7);
+LMG2L["Frame3_17"]["Name"] = [[Frame3]];
+LMG2L["Frame3_17"]["BackgroundTransparency"] = 1;
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame3.TextButton2
+LMG2L["TextButton2_18"] = Instance.new("TextButton", LMG2L["Frame3_17"]);
+LMG2L["TextButton2_18"]["TextSize"] = 10;
+LMG2L["TextButton2_18"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextButton2_18"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton2_18"]["BackgroundTransparency"] = 0.6;
+LMG2L["TextButton2_18"]["Size"] = UDim2.new(0, 86, 0, 24);
+LMG2L["TextButton2_18"]["Text"] = [[Admin Panel]];
+LMG2L["TextButton2_18"]["Name"] = [[TextButton2]];
+LMG2L["TextButton2_18"]["Position"] = UDim2.new(0, 30, 0, -2);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame3.TextButton4
+LMG2L["TextButton4_19"] = Instance.new("TextButton", LMG2L["Frame3_17"]);
+LMG2L["TextButton4_19"]["TextSize"] = 10;
+LMG2L["TextButton4_19"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextButton4_19"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton4_19"]["BackgroundTransparency"] = 0.6;
+LMG2L["TextButton4_19"]["Size"] = UDim2.new(0, 62, 0, 24);
+LMG2L["TextButton4_19"]["Text"] = [[Ssp]];
+LMG2L["TextButton4_19"]["Name"] = [[TextButton4]];
+LMG2L["TextButton4_19"]["Position"] = UDim2.new(0, 296, 0, -2);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame3.TextButton3
+LMG2L["TextButton3_1a"] = Instance.new("TextButton", LMG2L["Frame3_17"]);
+LMG2L["TextButton3_1a"]["TextSize"] = 10;
+LMG2L["TextButton3_1a"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextButton3_1a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton3_1a"]["BackgroundTransparency"] = 0.6;
+LMG2L["TextButton3_1a"]["Size"] = UDim2.new(0, 62, 0, 24);
+LMG2L["TextButton3_1a"]["Text"] = [[Dex]];
+LMG2L["TextButton3_1a"]["Name"] = [[TextButton3]];
+LMG2L["TextButton3_1a"]["Position"] = UDim2.new(0, 364, 0, -2);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame3.TextButton
+LMG2L["TextButton_1b"] = Instance.new("TextButton", LMG2L["Frame3_17"]);
+LMG2L["TextButton_1b"]["TextSize"] = 10;
+LMG2L["TextButton_1b"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextButton_1b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton_1b"]["BackgroundTransparency"] = 0.6;
+LMG2L["TextButton_1b"]["Size"] = UDim2.new(0, 86, 0, 24);
+LMG2L["TextButton_1b"]["Text"] = [[Executor]];
+LMG2L["TextButton_1b"]["Position"] = UDim2.new(0, -60, 0, -2);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame
+LMG2L["Frame_1c"] = Instance.new("Frame", LMG2L["ImageLabel2_5"]);
+LMG2L["Frame_1c"]["BorderSizePixel"] = 0;
+LMG2L["Frame_1c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["Frame_1c"]["Size"] = UDim2.new(0, 492, 0, 346);
+LMG2L["Frame_1c"]["BackgroundTransparency"] = 1;
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame.TextButton2
+LMG2L["TextButton2_1d"] = Instance.new("TextButton", LMG2L["Frame_1c"]);
+LMG2L["TextButton2_1d"]["RichText"] = true;
+LMG2L["TextButton2_1d"]["TextSize"] = 18;
+LMG2L["TextButton2_1d"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextButton2_1d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton2_1d"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextButton2_1d"]["BackgroundTransparency"] = 0.6;
+LMG2L["TextButton2_1d"]["Size"] = UDim2.new(0, 110, 0, 56);
+LMG2L["TextButton2_1d"]["Text"] = [[CLEAR]];
+LMG2L["TextButton2_1d"]["Name"] = [[TextButton2]];
+LMG2L["TextButton2_1d"]["Position"] = UDim2.new(0, 118, 0, 276);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame.TextButton5
+LMG2L["TextButton5_1e"] = Instance.new("TextButton", LMG2L["Frame_1c"]);
+LMG2L["TextButton5_1e"]["RichText"] = true;
+LMG2L["TextButton5_1e"]["TextSize"] = 18;
+LMG2L["TextButton5_1e"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextButton5_1e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton5_1e"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextButton5_1e"]["BackgroundTransparency"] = 0.6;
+LMG2L["TextButton5_1e"]["Size"] = UDim2.new(0, 68, 0, 56);
+LMG2L["TextButton5_1e"]["Text"] = [[R6]];
+LMG2L["TextButton5_1e"]["Name"] = [[TextButton5]];
+LMG2L["TextButton5_1e"]["Position"] = UDim2.new(0, 348, 0, 276);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame.TextButton4
+LMG2L["TextButton4_1f"] = Instance.new("TextButton", LMG2L["Frame_1c"]);
+LMG2L["TextButton4_1f"]["RichText"] = true;
+LMG2L["TextButton4_1f"]["TextSize"] = 18;
+LMG2L["TextButton4_1f"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextButton4_1f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton4_1f"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextButton4_1f"]["BackgroundTransparency"] = 0.6;
+LMG2L["TextButton4_1f"]["Size"] = UDim2.new(0, 110, 0, 56);
+LMG2L["TextButton4_1f"]["Text"] = [[INJECT]];
+LMG2L["TextButton4_1f"]["Name"] = [[TextButton4]];
+LMG2L["TextButton4_1f"]["Position"] = UDim2.new(0, 233, 0, 276);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame.TextButton3
+LMG2L["TextButton3_20"] = Instance.new("TextButton", LMG2L["Frame_1c"]);
+LMG2L["TextButton3_20"]["RichText"] = true;
+LMG2L["TextButton3_20"]["TextSize"] = 18;
+LMG2L["TextButton3_20"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextButton3_20"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton3_20"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextButton3_20"]["BackgroundTransparency"] = 0.6;
+LMG2L["TextButton3_20"]["Size"] = UDim2.new(0, 66, 0, 56);
+LMG2L["TextButton3_20"]["Text"] = [[RE]];
+LMG2L["TextButton3_20"]["Name"] = [[TextButton3]];
+LMG2L["TextButton3_20"]["Position"] = UDim2.new(0, 422, 0, 276);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame.ScrollingFrame2
+LMG2L["ScrollingFrame2_21"] = Instance.new("ScrollingFrame", LMG2L["Frame_1c"]);
+LMG2L["ScrollingFrame2_21"]["ElasticBehavior"] = Enum.ElasticBehavior.Never;
+LMG2L["ScrollingFrame2_21"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["ScrollingFrame2_21"]["Name"] = [[ScrollingFrame2]];
+LMG2L["ScrollingFrame2_21"]["HorizontalScrollBarInset"] = Enum.ScrollBarInset.ScrollBar;
+LMG2L["ScrollingFrame2_21"]["SelectionBehaviorDown"] = Enum.SelectionBehavior.Stop;
+LMG2L["ScrollingFrame2_21"]["Size"] = UDim2.new(0, 486, 0, 236);
+LMG2L["ScrollingFrame2_21"]["ScrollBarImageColor3"] = Color3.fromRGB(177, 177, 177);
+LMG2L["ScrollingFrame2_21"]["Position"] = UDim2.new(0, 2, 0, 34);
+LMG2L["ScrollingFrame2_21"]["SelectionBehaviorUp"] = Enum.SelectionBehavior.Stop;
+LMG2L["ScrollingFrame2_21"]["BackgroundTransparency"] = 0.6;
+LMG2L["ScrollingFrame2_21"]["SelectionBehaviorRight"] = Enum.SelectionBehavior.Stop;
+LMG2L["ScrollingFrame2_21"]["SelectionBehaviorLeft"] = Enum.SelectionBehavior.Stop;
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame.ScrollingFrame2.TextBox
+LMG2L["TextBox_22"] = Instance.new("TextBox", LMG2L["ScrollingFrame2_21"]);
+LMG2L["TextBox_22"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+LMG2L["TextBox_22"]["BorderSizePixel"] = 0;
+LMG2L["TextBox_22"]["TextWrapped"] = true;
+LMG2L["TextBox_22"]["TextSize"] = 14;
+LMG2L["TextBox_22"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextBox_22"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+LMG2L["TextBox_22"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextBox_22"]["FontFace"] = Font.new([[rbxasset://fonts/families/Inconsolata.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextBox_22"]["MultiLine"] = true;
+LMG2L["TextBox_22"]["ClearTextOnFocus"] = false;
+LMG2L["TextBox_22"]["Size"] = UDim2.new(0, 370, 0, 270);
+LMG2L["TextBox_22"]["Position"] = UDim2.new(0, 4, 0, 0);
+LMG2L["TextBox_22"]["Text"] = [[-- Print Console      
+print("CilentSide")]];
+LMG2L["TextBox_22"]["BackgroundTransparency"] = 1;
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel2.Frame.TextButton
+LMG2L["TextButton_23"] = Instance.new("TextButton", LMG2L["Frame_1c"]);
+LMG2L["TextButton_23"]["TextSize"] = 18;
+LMG2L["TextButton_23"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextButton_23"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton_23"]["FontFace"] = Font.new([[rbxasset://fonts/families/HighwayGothic.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextButton_23"]["BackgroundTransparency"] = 0.6;
+LMG2L["TextButton_23"]["Size"] = UDim2.new(0, 110, 0, 56);
+LMG2L["TextButton_23"]["Text"] = [[EXECUTE]];
+LMG2L["TextButton_23"]["Position"] = UDim2.new(0, 2, 0, 276);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.TextButton
+LMG2L["TextButton_24"] = Instance.new("TextButton", LMG2L["Frame_2"]);
+LMG2L["TextButton_24"]["TextWrapped"] = true;
+LMG2L["TextButton_24"]["BorderSizePixel"] = 0;
+LMG2L["TextButton_24"]["TextSize"] = 30;
+LMG2L["TextButton_24"]["TextColor3"] = Color3.fromRGB(69, 69, 69);
+LMG2L["TextButton_24"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton_24"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextButton_24"]["BackgroundTransparency"] = 9;
+LMG2L["TextButton_24"]["Size"] = UDim2.new(0, 34, 0, 18);
+LMG2L["TextButton_24"]["Text"] = [[X]];
+LMG2L["TextButton_24"]["Position"] = UDim2.new(0, 458, 0, 5);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel3
+LMG2L["ImageLabel3_25"] = Instance.new("ImageLabel", LMG2L["Frame_2"]);
+LMG2L["ImageLabel3_25"]["BorderSizePixel"] = 0;
+LMG2L["ImageLabel3_25"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+-- LMG2L["ImageLabel3_25"]["ImageContent"] = ;
+LMG2L["ImageLabel3_25"]["Image"] = [[rbxassetid://78673506636333]];
+LMG2L["ImageLabel3_25"]["Size"] = UDim2.new(0, 90, 0, 26);
+LMG2L["ImageLabel3_25"]["Name"] = [[ImageLabel3]];
+LMG2L["ImageLabel3_25"]["Position"] = UDim2.new(0, 370, 0, 0);
+
+
+-- Players.pleasefebypass2723.PlayerGui.ScreenGui.Frame.ImageLabel3.ImageLabel
+LMG2L["ImageLabel_26"] = Instance.new("ImageLabel", LMG2L["ImageLabel3_25"]);
+LMG2L["ImageLabel_26"]["BorderSizePixel"] = 0;
+LMG2L["ImageLabel_26"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["ImageLabel_26"]["ImageTransparency"] = 1;
+LMG2L["ImageLabel_26"]["Size"] = UDim2.new(0, 28, 0, 24);
+LMG2L["ImageLabel_26"]["BackgroundTransparency"] = 1;
+LMG2L["ImageLabel_26"]["Position"] = UDim2.new(0, 8, 0, 2);
+
+LMG2L["UIDragDetector_27"] = Instance.new("UIDragDetector", LMG2L["Frame_2"]);
+
+
+LMG2L["TextButton_1b"].MouseButton1Click:Connect(function()
+LMG2L["Frame2_6"].Visible = false
+LMG2L["Frame_1c"].Visible = true
+end)
+
+LMG2L["TextButton2_18"].MouseButton1Click:Connect(function()
+LMG2L["Frame2_6"].Visible = true
+LMG2L["Frame_1c"].Visible = false
+end)
+
+
+local decalId = LMG2L["TextBox_14"].Text
+local skyId = LMG2L["TextBox_14"].Text
+local sound = LMG2L["TextBox_14"].Text
+
+
+local function 1()
+
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = sound
+Spooky.Volume = 5
+Spooky.Looped = true
+Spooky.Pitch = 1
+Spooky:Play()
+
+
+end
+
+local function 2()
+ local function applyDecalToAllSides(part)
+    local faces = {
+        Enum.NormalId.Top,
+        Enum.NormalId.Bottom,
+        Enum.NormalId.Left,
+        Enum.NormalId.Right,
+        Enum.NormalId.Front,
+        Enum.NormalId.Back
+    }
+
+    for _, face in ipairs(faces) do
+        local decal = Instance.new("Decal")
+        decal.Texture = decalId
+        decal.Face = face
+        decal.Parent = part
+    end
+end
+
+
+for _, part in ipairs(workspace:GetDescendants()) do
+    if part:IsA("BasePart") then
+        applyDecalToAllSides(part)
+    end
+end
+end
+
+
+local function 3()
+local sky = Instance.new("Sky")
+sky.SkyboxBk = skyId
+sky.SkyboxDn = skyId
+sky.SkyboxFt = skyId
+sky.SkyboxLf = skyId
+sky.SkyboxRt = skyId
+sky.SkyboxUp = skyId
+sky.Parent = game.Lighting
+end
+
+
+local function 4()
+local p = game.Players:GetChildren()
+for _,v in pairs(p) do
+if v.Character.Torso:FindFirstChild("ParticleEmitter") == nil then
+fe = Instance.new("ParticleEmitter",v.Character.Torso)
+fe.Texture = "http://www.roblox.com/asset/?id=127476787"
+fe.VelocitySpread = 3
+end
+end
+end
+
+
+local function 5()
+    local found = false
+
+	for i=1, #commonPlaces do
+		local place = commonPlaces[i];
+		if scanDescendants(place) then
+            found = true
+        end
+	end
+
+	local children = game:GetChildren();
+	for i=1, #children do
+		local child = children[i];
+		if tableFind(commonPlaces, child) then continue; end
+		
+		if scanDescendants(child) then 
+            found = true
+        end
+	end
+    if found then
+        notify("Backdoored/Injected!")
+    end
+    if not found then
+        notify("Unable to find backdoor")
+    end
+
+	return found;
+end
+
+
+
+return LMG2L["ScreenGui_1"]
