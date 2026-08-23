@@ -3648,6 +3648,14 @@ ButtonTemplate.Active = true
 ButtonTemplate.LineHeight = 1
 ButtonTemplate.MaxVisibleGraphemes = -1
 
+TextBoxTemplate.Visible = false 
+Box.Visible = false 
+ButtonTemplate.Visible = false 
+wait(0.4)
+TextBoxTemplate.Visible = true 
+Box.Visible = true 
+ButtonTemplate.Visible = true 
+
 local UICorner = Instance.new("UICorner")
 UICorner.Name = "UICorner"
 UICorner.Parent = ButtonTemplate
