@@ -3648,13 +3648,6 @@ ButtonTemplate.Active = true
 ButtonTemplate.LineHeight = 1
 ButtonTemplate.MaxVisibleGraphemes = -1
 
-TextBoxTemplate.Visible = false 
-Box.Visible = false 
-ButtonTemplate.Visible = false 
-wait(0.4)
-TextBoxTemplate.Visible = true 
-Box.Visible = true 
-ButtonTemplate.Visible = true 
 
 local UICorner = Instance.new("UICorner")
 UICorner.Name = "UICorner"
@@ -3769,7 +3762,7 @@ local function updateButtons()
     massBox.Box.Text = tostring(modelSettings.MaxMass)
     clickButton.Text = clickThunder and "Mouse Thunder Beam: On" or "Mouse Thunder Beam: Off"
 end
- 
+ wait(0.5)
 setTitle("Grandosla")
 newButton("Power Toggle",function()
     togglePower()
