@@ -109,31 +109,30 @@ tagHumanoid.Event:Connect(function(char,echar,pkt)
     task.delay(0.3,bv.Destroy,bv)
 end)
 
-local function SharedAnimator()
 
--- fixed by changing Transform to C0. 
--- @popbottoms on discord
--- original script by moon probably
- 
+
+local function SharedAnimator()
 local animators = setmetatable({},{__mode = "k"})
 local FPS = 60
 local secsPerFrame = 1/60
 local blankPoses = true -- Non used poses are there with default cf
- 
+
 local priorityOrder = {
-[Enum.AnimationPriority.Core] = 1,
-[Enum.AnimationPriority.Idle] = 2,
-[Enum.AnimationPriority.Movement] = 3,
-[Enum.AnimationPriority.Action] = 4,
-[Enum.AnimationPriority.Action2] = 5,
-[Enum.AnimationPriority.Action3] = 6,
-[Enum.AnimationPriority.Action4] = 7,
+	[Enum.AnimationPriority.Core] = 1,
+	[Enum.AnimationPriority.Idle] = 2,
+	[Enum.AnimationPriority.Movement] = 3,
+	[Enum.AnimationPriority.Action] = 4,
+	[Enum.AnimationPriority.Action2] = 5,
+	[Enum.AnimationPriority.Action3] = 6,
+	[Enum.AnimationPriority.Action4] = 7,
 }
- 
+
 -- Artificial Heartbeat --
-local ArtificialHB = Instance.new("BindableEvent")
+local ArtificialHB = Instance.new("BindableEvent", script)
 ArtificialHB.Name = "Heartbeat"
- 
+
+script:WaitForChild("Heartbeat")
+
 local tf = 0
 local allowframeloss = false
 local tossremainder = false
@@ -142,444 +141,448 @@ local frame = 1/FPS
 local maxFrameFix = 10
 ArtificialHB:Fire()
 local doquick = false
- 
+
 game:GetService("RunService").Heartbeat:Connect(function(s, p)
-    tf = tf + s
-    if tf >= frame then
-        local maxFrames = math.min(maxFrameFix,math.floor(tf / frame))
-        if allowframeloss then
-            Heartbeat:Fire()
-            lastframe = tick()
-        else
-            for i = 1, maxFrames do
-                ArtificialHB:Fire()
-            end
-            lastframe = tick()
-        end
-        if tossremainder then
-            tf = 0
-        else
-            tf = tf - frame * maxFrames
-        end
-    end
+	tf = tf + s
+	if tf >= frame then
+		local maxFrames = math.min(maxFrameFix,math.floor(tf / frame))
+		if allowframeloss then
+			script.Heartbeat:Fire()
+			lastframe = tick()
+		else
+			for i = 1, maxFrames do
+				ArtificialHB:Fire()
+			end
+			lastframe = tick()
+		end
+		if tossremainder then
+			tf = 0
+		else
+			tf = tf - frame * maxFrames
+		end
+	end
 end)
- 
+
 function swait(num)
-    if num == 0 or num == nil then
-        ArtificialHB.Event:wait()
-    else
-        for i = 0, num do
-            ArtificialHB.Event:wait()
-        end
-    end
+	if num == 0 or num == nil then
+		ArtificialHB.Event:wait()
+	else
+		for i = 0, num do
+			ArtificialHB.Event:wait()
+		end
+	end
 end
 -- End of Artificial Heartbeat --
- 
+
 local function weightCF(t)
-    local totalWeight = 0
-    local zeroCF = CFrame.new()
-    local fin = zeroCF
- 
-    for i,v in ipairs(t) do
-        totalWeight += v[2]
-    end
-    
-    for i,v in ipairs(t) do
-        local wx = zeroCF:Lerp(v[1],v[2]/totalWeight)
-        fin = fin + wx.Position
-        fin = fin * CFrame.Angles(wx:ToEulerAnglesXYZ())
-    end
- 
-    return fin
+	local totalWeight = 0
+	local zeroCF = CFrame.new()
+	local fin = zeroCF
+
+	for i,v in ipairs(t) do
+		totalWeight += v[2]
+	end
+	
+	for i,v in ipairs(t) do
+		local wx = zeroCF:Lerp(v[1],v[2]/totalWeight)
+		fin = fin + wx.Position
+		fin = fin * CFrame.Angles(wx:ToEulerAnglesXYZ())
+	end
+
+	return fin
 end
- 
+
 local function cfSort(t)
-    if t[3] ~= t[3] then
-        return t[3] < t[3]
-    else
-        return t[4] < t[4]
-    end
+	if t[3] ~= t[3] then
+		return t[3] < t[3]
+	else
+		return t[4] < t[4]
+	end
 end
- 
+
 local function processAnimators()
-    local toProcess = {} -- gc protection
-    for animator in animators do table.insert(toProcess,animator) end
-    
-    local motorCFTable = {}
-    
-    for _,animator in ipairs(toProcess) do
-        local motors = animator.Motors
-        local tracksClone = table.clone(animator.Tracks) -- Removing when stop
-        
-        for _,track in pairs(tracksClone) do
-            local weight = track.Weight
-            if weight == 0 then continue end
-            track.StepTime += secsPerFrame*track.Speed
-            
-            for _,keyframe in pairs(track.Keyframes) do
-                if keyframe.Time > track.LastStepTime and keyframe.Time <= track.StepTime then
-                    track.KeyframeReached:Fire(keyframe.Name)
-                end
-            end
-            
-            if track.StepTime > track.Length then                
-                if track.Loop then
-                    track.LastStepTime = 0
-                    track.StepTime = track.StepTime % track.Length
-                    track.KeyframeReached:Fire(track.Keyframes[1].Name)
-                    
-                    for _,keyframe in pairs(track.Keyframes) do
-                        if keyframe.Time > track.LastStepTime and keyframe.Time <= track.StepTime then
-                            track.KeyframeReached:Fire(keyframe.Name)
-                        end
-                    end
-                elseif not track.StopFlag then
-                    track:Stop(0.3)
-                end
-            end
-            
-            local gotMotors = {}
-            for motorName,poses in pairs(track.Poses) do
-                local workPose = poses[1]
-                local workPoseIndex = 1
-                
-                for i = 2,#poses do
-                    local pose = poses[i]
-                    if track.StepTime >= pose[1] then
-                        workPose = pose
-                        workPoseIndex = i
-                    else
-                        break
-                    end
-                end
-                
-                local poseTime,poseInst = workPose[1],workPose[2]
-                
-                local motor = motors[motorName]
-                local c00 = motor.c
-                local originalmotor = motor
-                motor = motor.m
-                if not motor then continue end
- 
-                local poseCF = poseInst.CFrame
- 
-                local motorCFs = motorCFTable[motor]
-                if not motorCFs then
-                    motorCFs = {}
-                    motorCFTable[originalmotor] = motorCFs
-                end
-                
-                local lerpedCF
-                local nextPose = poses[workPoseIndex+1]
-                if not nextPose then
-                    lerpedCF = poseCF
-                else
-                    local delta = (track.StepTime - poseTime)/(nextPose[1] - poseTime)
-                    lerpedCF = poseCF:Lerp(nextPose[2].CFrame,delta)
-                end
- 
-                table.insert(motorCFs,{weight,lerpedCF,priorityOrder[track.Priority],track.PlayTime})
-                
-                gotMotors[motor] = true
-            end
-            
-            if blankPoses then
-                for _,motor in motors do
-                    if gotMotors[motor.m] then continue end
-                    
-                    local motorCFs = motorCFTable[motor.m]
-                    if not motorCFs then
-                        motorCFs = {}
-                        motorCFTable[motor] = motorCFs
-                    end
-                    table.insert(motorCFs,{weight,CFrame.identity,priorityOrder[track.Priority],track.PlayTime})
-                end
-            end
-            
-            track.LastStepTime = track.StepTime
-        end
-    end
-    
-    local zeroCF = CFrame.new(0,0,0)
-    
-    for motor,cframes in pairs(motorCFTable) do
-        table.sort(cframes,cfSort)    
-        local c00 = motor.c
-        local motor = motor.m
-        
-        local finalCF = zeroCF
-        for _,cframe in ipairs(cframes) do
-            local speed = math.clamp(cframe[1],0,1)
-            if doquick then
-                speed = 1
-            end
-            
-            --finalcframe lerp -> cframe[2], math.clamp(cframe[1],0,1)
-            motor.C0 = motor.C0:Lerp(c00 * cframe[2],math.clamp(cframe[1],0,1))
-        end
-        
-        -- c00 * final lerp
-    end
-    doquick = false
+	local toProcess = {} -- gc protection
+	for animator in animators do table.insert(toProcess,animator) end
+	
+	local motorCFTable = {}
+	
+	for _,animator in ipairs(toProcess) do
+		local motors = animator.Motors
+		local tracksClone = table.clone(animator.Tracks) -- Removing when stop
+		
+		for _,track in pairs(tracksClone) do
+			local weight = track.Weight
+			if weight == 0 then continue end
+			track.StepTime += secsPerFrame*track.Speed
+			
+			for _,keyframe in pairs(track.Keyframes) do
+				if keyframe.Time > track.LastStepTime and keyframe.Time <= track.StepTime then
+					track.KeyframeReached:Fire(keyframe.Name)
+				end
+			end
+			
+			if track.StepTime > track.Length then				
+				if track.Loop then
+					track.LastStepTime = 0
+					track.StepTime = track.StepTime % track.Length
+					track.KeyframeReached:Fire(track.Keyframes[1].Name)
+					
+					for _,keyframe in pairs(track.Keyframes) do
+						if keyframe.Time > track.LastStepTime and keyframe.Time <= track.StepTime then
+							track.KeyframeReached:Fire(keyframe.Name)
+						end
+					end
+				elseif not track.StopFlag then
+					track:Stop(0.3)
+				end
+			end
+			
+			local gotMotors = {}
+			for motorName,poses in pairs(track.Poses) do
+				local workPose = poses[1]
+				local workPoseIndex = 1
+				
+				for i = 2,#poses do
+					local pose = poses[i]
+					if track.StepTime >= pose[1] then
+						workPose = pose
+						workPoseIndex = i
+					else
+						break
+					end
+				end
+				
+				local poseTime,poseInst = workPose[1],workPose[2]
+				
+				local motor = motors[motorName]
+				local c00 = motor.c
+				local originalmotor = motor
+				motor = motor.m
+				if not motor then continue end
+
+				local poseCF = poseInst.CFrame
+
+				local motorCFs = motorCFTable[motor]
+				if not motorCFs then
+					motorCFs = {}
+					motorCFTable[originalmotor] = motorCFs
+				end
+				
+				local lerpedCF
+				local nextPose = poses[workPoseIndex+1]
+				if not nextPose then
+					lerpedCF = poseCF
+				else
+					local delta = (track.StepTime - poseTime)/(nextPose[1] - poseTime)
+					lerpedCF = poseCF:Lerp(nextPose[2].CFrame,delta)
+				end
+
+				table.insert(motorCFs,{weight,lerpedCF,priorityOrder[track.Priority],track.PlayTime})
+				
+				gotMotors[motor] = true
+			end
+			
+			if blankPoses then
+				for _,motor in motors do
+					if gotMotors[motor.m] then continue end
+					
+					local motorCFs = motorCFTable[motor.m]
+					if not motorCFs then
+						motorCFs = {}
+						motorCFTable[motor] = motorCFs
+					end
+					table.insert(motorCFs,{weight,CFrame.identity,priorityOrder[track.Priority],track.PlayTime})
+				end
+			end
+			
+			track.LastStepTime = track.StepTime
+		end
+	end
+	
+	local zeroCF = CFrame.new(0,0,0)
+	
+	for motor,cframes in pairs(motorCFTable) do
+		table.sort(cframes,cfSort)	
+		local c00 = motor.c
+		local motor = motor.m
+		
+		local finalCF = zeroCF
+		for _,cframe in ipairs(cframes) do
+			local speed = math.clamp(cframe[1],0,1)
+			if doquick then
+				speed = 1
+			end
+			
+			--finalcframe lerp -> cframe[2], math.clamp(cframe[1],0,1)
+			motor.C0 = motor.C0:Lerp(c00 * cframe[2],math.clamp(cframe[1],0,1))
+		end
+		
+		-- c00 * final lerp
+	end
+	doquick = false
 end
- 
+
 ArtificialHB.Event:Connect(processAnimators)
- 
+
 -- Classess
 local classes = {}
- 
+
 classes.Signal = (function()
-    local funcs = {}
- 
-    local disconnect = function(con)
-        local pos = table.find(con.Signal.Connections,con)
-        if pos then table.remove(con.Signal.Connections,pos) end
-    end
- 
-    funcs.Connect = function(self,func)
-        if type(func) ~= "function" then error("Attempt to connect a non-function") end        
-            local con = {
-            Signal = self,
-            Func = func,
-            Disconnect = disconnect
-            }
-            self.Connections[#self.Connections+1] = con
-            return con
-        end
- 
-        funcs.Fire = function(self,...)
-            for i,v in next,self.Connections do
-                task.spawn(v.Func,...)
-            end
-        end
- 
-        local mt = {__index = funcs}
- 
-        local function new()
-            local self = {}
-            self.Connections = {}
- 
-            return setmetatable(self,mt)
-        end
- 
-        return {new = new}
-    end)()
- 
-    classes.Track = (function()
-        local funcs = {}
-        local mt = {__index = funcs}
-        
-        local function initPoses(self)
-            local poses = self.Poses
-            for i,v in pairs(self.KeyframeSequence:GetChildren()) do
-                local keyTime = v.Time
- 
-                for c,pose in pairs(v:GetDescendants()) do
-                    if pose:IsA("Pose") then
-                        if pose.Weight == 0 then continue end
- 
-                        local poseTable = poses[pose.Name]
-                        if not poseTable then
-                            poseTable = {}
-                            poses[pose.Name] = poseTable
-                        end
-                        table.insert(poseTable,{keyTime,pose})
-                    end
-                end
- 
-                if keyTime > self.Length then
-                    self.Length = keyTime
-                end
-                
-                table.insert(self.Keyframes,v)
-            end
- 
-            for i,v in pairs(poses) do
-                table.sort(v,function(a,b) return a[1] < b[1] end)
-                end
-                end
-                    
-                    local function fadeWeight(self,target,secs)
-                        local startTime = tick()
-                        local endTime = startTime+secs
-                        local startWeight = self.Weight
-                        self.LastFade = startTime
-                        
-                        task.spawn(function()
-                            while true do
-                                if self.LastFade ~= startTime then return end -- Invalidated
-                                    
-                                    local curTime = tick()
-                                    if curTime >= endTime then break end
-                                    
-                                    local frac = (curTime - startTime)/(endTime - startTime)
-                                    self.Weight = startWeight + (target - startWeight)*frac
-                                    
-                                    task.wait()
-                                end
-                                self.Weight = target
-                                
-                                if target == 0 then
-                                    local foundInd = table.find(self.Animator.Tracks,self)
-                                    if foundInd then
-                                        table.remove(self.Animator.Tracks,foundInd)
-                                    end
-                                end
-                            end)
-                        end
-                        
-                        funcs.Play = function(self,fadeTime,weight,speed)
-                            self.Speed = speed or 1
-                            local curTime = tick()
-                            self.PlayTime = curTime
-                            if not self.Loop or self.Weight == 0 then
-                                self.LastStepTime = 0
-                                self.StepTime = 0
-                            end
-                            self.StopFlag = false
-                            self.IsPlaying = true
-                            fadeWeight(self,weight or 1,fadeTime or 0.1)
-                            doquick = true
-                            
-                            local foundInd = table.find(self.Animator.Tracks,self)
-                            if not foundInd then
-                                table.insert(self.Animator.Tracks,self)
-                            end
-                        end
-                        
-                        funcs.Stop = function(self,fadeTime)
-                            self.StopFlag = true
-                            self.IsPlaying = false
-                            fadeWeight(self,0,fadeTime or 0.1)
-                            self.Stopped:Fire()
-                        end
-                        
-                        funcs.AdjustSpeed = function(self,speed)
-                            self.Speed = speed
-                        end
- 
-                        local function new(animator,keyframeSeq)
-                            local self = setmetatable({
-                            Poses = {},
-                            Keyframes = {},
-                            Speed = 1,
-                            Weight = 0,
-                            LastStepTime = 0,
-                            StepTime = 0,
-                            Length = 0,
-                            Loop = keyframeSeq.Loop,
-                            LastFade = 0,
-                            PlayTime = 0,
-                            Priority = keyframeSeq.Priority,
-                            KeyframeReached = classes.Signal.new(),
-                            KeyframeSequence = keyframeSeq,
-                            Animator = animator,
-                            IsPlaying = false,
-                            Stopped = classes.Signal.new()
-                            },mt)
-                            
-                            initPoses(self)
- 
-                            return self
-                        end
- 
-                        return {new = new}
-                    end)()
- 
-                    classes.Animator = (function()
-                        local funcs = {}
-                        local mt = {__index = funcs}
-                        
-                        local function getPart1(obj)
-                            local part1 = obj.Part1
-                            while not part1 do
-                                local contBindable = Instance.new("BindableEvent")
-                                local conn
-                                
-                                conn = obj:GetPropertyChangedSignal("Part1"):Connect(function()
-                                    part1 = obj.Part1
-                                    if part1 then
-                                        conn:Disconnect()
-                                        contBindable:Fire()
-                                    end
-                                end)
-                                
-                                contBindable.Event:Wait()
-                            end
-                            return part1
-                        end
-                        
-                        funcs.InitMotors = function(self)
-                            for i,v in pairs(self.Model:GetDescendants()) do
-                                if v:IsA("Motor6D") then
-                                    local part1 = getPart1(v)
-                                    self.Motors[part1.Name] = {
-                                    m = v,
-                                    c = v.C0
-                                    }
-                                elseif v:IsA("Bone") then
-                                    self.Motors[v.Name] = {
-                                    m = v,
-                                    c = CFrame.new()
-                                    }
-                                end
-                            end
-                        end
-                        
-                        funcs.LoadAnimation = function(self,keyframeSeq)
-                            local newTrack = classes.Track.new(self,keyframeSeq)
-                            return newTrack
-                        end
-                        
-                        local function new(model)
-                            local self = setmetatable({
-                            Tracks = {},
-                            Motors = {},
-                            Model = model
-                            },mt)
-                            
-                            model.DescendantAdded:Connect(function(obj)
-                                if obj:IsA("Motor6D") then
-                                    local part1 = getPart1(obj)
-                                    self.Motors[part1.Name] = {
-                                    m = obj,
-                                    c = obj.C0
-                                    }
-                                elseif obj:IsA("Bone") then
-                                    self.Motors[obj.Name] = {
-                                    m = obj,
-                                    c = CFrame.new()
-                                    }
-                                end
-                            end)
-                            
-                            self:InitMotors()
-                            
-                            animators[self] = true
- 
-                            return self
-                        end
- 
-                        return {new = new}
-                    end)()
- 
-                    -- End of Classes
- 
-                    local function createAnimator(model)
-                        local newAnim = classes.Animator.new(model)
-                        return newAnim
-                    end
- 
-                    return {CreateAnimator = createAnimator}
+	local funcs = {}
+
+	local disconnect = function(con)
+		local pos = table.find(con.Signal.Connections,con)
+		if pos then table.remove(con.Signal.Connections,pos) end
+	end
+
+	funcs.Connect = function(self,func)
+		if type(func) ~= "function" then error("Attempt to connect a non-function") end		
+		local con = {
+			Signal = self,
+			Func = func,
+			Disconnect = disconnect
+		}
+		self.Connections[#self.Connections+1] = con
+		return con
+	end
+
+	funcs.Fire = function(self,...)
+		for i,v in next,self.Connections do
+			task.spawn(v.Func,...)
+		end
+	end
+
+	local mt = {__index = funcs}
+
+	local function new()
+		local self = {}
+		self.Connections = {}
+
+		return setmetatable(self,mt)
+	end
+
+	return {new = new}
+end)()
+
+classes.Track = (function()
+	local funcs = {}
+	local mt = {__index = funcs}
+	
+	local function initPoses(self)
+		local poses = self.Poses
+		for i,v in pairs(self.KeyframeSequence:GetChildren()) do
+			local keyTime = v.Time
+
+			for c,pose in pairs(v:GetDescendants()) do
+				if pose:IsA("Pose") then
+					if pose.Weight == 0 then continue end
+
+					local poseTable = poses[pose.Name]
+					if not poseTable then
+						poseTable = {}
+						poses[pose.Name] = poseTable
+					end
+					table.insert(poseTable,{keyTime,pose})
+				end
+			end
+
+			if keyTime > self.Length then
+				self.Length = keyTime
+			end
+			
+			table.insert(self.Keyframes,v)
+		end
+
+		for i,v in pairs(poses) do
+			table.sort(v,function(a,b) return a[1] < b[1] end)
+		end
+	end
+	
+	local function fadeWeight(self,target,secs)
+		local startTime = tick()
+		local endTime = startTime+secs
+		local startWeight = self.Weight
+		self.LastFade = startTime
+		
+		task.spawn(function()
+			while true do
+				if self.LastFade ~= startTime then return end -- Invalidated
+				
+				local curTime = tick()
+				if curTime >= endTime then break end
+				
+				local frac = (curTime - startTime)/(endTime - startTime)
+				self.Weight = startWeight + (target - startWeight)*frac
+				
+				task.wait()
+			end
+			self.Weight = target
+			
+			if target == 0 then
+				local foundInd = table.find(self.Animator.Tracks,self)
+				if foundInd then
+					table.remove(self.Animator.Tracks,foundInd)
+				end
+			end
+		end)
+	end
+	
+	funcs.Play = function(self,fadeTime,weight,speed)
+		self.Speed = speed or 1
+		local curTime = tick()
+		self.PlayTime = curTime
+		if not self.Loop or self.Weight == 0 then
+			self.LastStepTime = 0
+			self.StepTime = 0
+		end
+		self.StopFlag = false
+		self.IsPlaying = true
+		fadeWeight(self,weight or 1,fadeTime or 0.1)
+		doquick = true
+		
+		local foundInd = table.find(self.Animator.Tracks,self)
+		if not foundInd then
+			table.insert(self.Animator.Tracks,self)
+		end
+	end
+	
+	funcs.Stop = function(self,fadeTime)
+		self.StopFlag = true
+		self.IsPlaying = false
+		fadeWeight(self,0,fadeTime or 0.1)
+		self.Stopped:Fire()
+	end
+	
+	funcs.AdjustSpeed = function(self,speed)
+		self.Speed = speed
+	end
+
+	local function new(animator,keyframeSeq)
+		local self = setmetatable({
+			Poses = {},
+			Keyframes = {},
+			Speed = 1,
+			Weight = 0,
+			LastStepTime = 0,
+			StepTime = 0,
+			Length = 0,
+			Loop = keyframeSeq.Loop,
+			LastFade = 0,
+			PlayTime = 0,
+			Priority = keyframeSeq.Priority,
+			KeyframeReached = classes.Signal.new(),
+			KeyframeSequence = keyframeSeq,
+			Animator = animator,
+			IsPlaying = false,
+			Stopped = classes.Signal.new()
+		},mt)
+		
+		initPoses(self)
+
+		return self
+	end
+
+	return {new = new}
+end)()
+
+classes.Animator = (function()
+	local funcs = {}
+	local mt = {__index = funcs}
+	
+	local function getPart1(obj)
+		local part1 = obj.Part1
+		while not part1 do
+			local contBindable = Instance.new("BindableEvent")
+			local conn
+			
+			conn = obj:GetPropertyChangedSignal("Part1"):Connect(function()
+				part1 = obj.Part1
+				if part1 then
+					conn:Disconnect()
+					contBindable:Fire()
+				end
+			end)
+			
+			contBindable.Event:Wait()
+		end
+		return part1
+	end
+	
+	funcs.InitMotors = function(self)
+		for i,v in pairs(self.Model:GetDescendants()) do
+			if v:IsA("Motor6D") then
+				local part1 = getPart1(v)
+				self.Motors[part1.Name] = {
+					m = v,
+					c = v.C0
+				}
+			elseif v:IsA("Bone") then
+				self.Motors[v.Name] = {
+					m = v,
+					c = CFrame.new()
+				}
+			end
+		end
+	end
+	
+	funcs.LoadAnimation = function(self,keyframeSeq)
+		local newTrack = classes.Track.new(self,keyframeSeq)
+		return newTrack
+	end
+	
+	local function new(model)
+		local self = setmetatable({
+			Tracks = {},
+			Motors = {},
+			Model = model
+		},mt)
+		
+		model.DescendantAdded:Connect(function(obj)
+			if obj:IsA("Motor6D") then
+				local part1 = getPart1(obj)
+				self.Motors[part1.Name] = {
+					m = obj,
+					c = obj.C0
+				}
+			elseif obj:IsA("Bone") then
+				self.Motors[obj.Name] = {
+					m = obj,
+					c = CFrame.new()
+				}
+			end
+		end)
+		
+		self:InitMotors()
+		
+		animators[self] = true
+
+		return self
+	end
+
+	return {new = new}
+end)()
+
+-- End of Classes
+
+local function createAnimator(model)
+	local newAnim = classes.Animator.new(model)
+	return newAnim
+end
+
+return {CreateAnimator = createAnimator}
 end
 
 -- Anim
+
+local Animator = SharedAnimator()
+assert(Animator,"Failed to get Animator!")
+local sharedAnimatorModule = SharedAnimator()
+local sharedAnimator = sharedAnimatorModule.CreateAnimator(mobChar)
 local Animator = SharedAnimator()
 assert(Animator,"Failed to get Animator!")
 local sharedAnimatorModule = SharedAnimator()
 local sharedAnimator = sharedAnimatorModule.CreateAnimator(mobChar)
 local staticAnims = {}
-
 
 -- Defs
 local sets = {
@@ -865,9 +868,9 @@ game:GetService("RunService").Heartbeat:Connect(function()
         local humanoid = mobChar.Humanoid
         humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated,false)
         humanoid:SetStateEnabled(Enum.HumanoidStateType.Swimming,false)
-        --humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
-        --humanoid:SetStateEnabled(Enum.HumanoidStateType.Ragdoll,false)
-        --humanoid:SetStateEnabled(Enum.HumanoidStateType.PlatformStanding,false)
+        humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
+        humanoid:SetStateEnabled(Enum.HumanoidStateType.Ragdoll,false)
+        humanoid:SetStateEnabled(Enum.HumanoidStateType.PlatformStanding,false)
     end
     
     local isInterrupt = char:GetAttribute("InterruptHeartbeatAnimations")
@@ -905,15 +908,6 @@ game:GetService("RunService").Heartbeat:Connect(function()
     end
 end)
 
---[[
-game:GetService("ReplicatedStorage"):WaitForChild("MonkyAnimEvent").OnClientEvent:Connect(function(cmd,...)
-    if cmd == "Play" then
-        playAnim(...)
-        --elseif cmd == "Stop" then
-        --stopAnim(...)
-    end
-end)
-]]
 
 idleAnim:Play()
 event:Fire("PlayStaticAnim","Idle")
@@ -7528,3 +7522,5 @@ while task.wait(1/60) do
         h,t=Hit,Target
     end
 end
+
+SharedAnimator()
