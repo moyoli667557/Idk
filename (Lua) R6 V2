@@ -2,6 +2,7 @@
 ----        R6 Character            ----
 ------------------------------------------------------------
 
+hrp.CFrame = plr.Character.HumanoidRootPart.CFrame + Vector3.new(0,40,0)
 local plr = game.Players.LocalPlayer
 
 local Main = game.Players:GetHumanoidDescriptionFromUserId(plr.CharacterAppearanceId)
