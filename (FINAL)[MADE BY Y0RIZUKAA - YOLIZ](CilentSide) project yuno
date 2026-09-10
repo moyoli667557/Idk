@@ -517,7 +517,7 @@ end]]
 end},
 
     {"1x4_song.txt", function()
-        LMG2L["TextBox_e"]["Text"] = [[-------------//1x1x1x1 laser theme\\-------------
+        LMG2L["TextBox_e"]["Text"] = [[-------------//1x1x1x1 theme\\-------------
 local music = Instance.new("Sound", workspace)
 music.Name = "1x1mus"
 music.Looped = true
